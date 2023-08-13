@@ -17,7 +17,7 @@ export const userSchema = new Schema({
     lastName: {
         type: String,
         trim: true,
-        required: [true, authMessages.REQUIRED_EMAIL],
+        required: [true, authMessages.REQUIRED_LAST_NAME],
         minLength: [3, authMessages.MIN_LENGTH_LAST_NAME]
     },
     email: {
