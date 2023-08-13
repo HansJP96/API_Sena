@@ -28,7 +28,10 @@ export const logInUser = async (req, res) => {
             console.info("El usuario se autentico correctamente")
         }).catch(err => {
             if (err instanceof Error.ValidationError) res.status(clientError.UNAUTHORIZED).json(err)
-            else if (err instanceof Error.DocumentNotFoundError) res.status(clientError.NOT_FOUND).json(err.message)
+            else if (err instanceof Error.DocumentNotFoundError) {
+                const { name, message, query } = err
+                res.status(clientError.NOT_FOUND).json({ name, query, message })
+            }
             else res.status(serverError.INTERNAL_SERVER_ERROR).json(err)
             console.error("Ocurrio un error autenticando al usuario")
             console.error(err)
