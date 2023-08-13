@@ -10,11 +10,15 @@ const { Schema } = mongoose;
 export const userSchema = new Schema({
     firstName: {
         type: String,
-        trim: true
+        trim: true,
+        required: [true, authMessages.REQUIRED_FIRST_NAME],
+        minLength: [3, authMessages.MIN_LENGTH_FIRST_NAME]
     },
     lastName: {
         type: String,
-        trim: true
+        trim: true,
+        required: [true, authMessages.REQUIRED_EMAIL],
+        minLength: [3, authMessages.MIN_LENGTH_LAST_NAME]
     },
     email: {
         type: String,
